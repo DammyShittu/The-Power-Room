@@ -19,7 +19,7 @@
 <body class="text-gray-800 antialiased ">
 
   <!-- Navbar -->
-  <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+  <nav class="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg" id="myNav">
     <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
       <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
         <a class="text-lg font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
@@ -325,10 +325,38 @@
     </div>
   </footer>
 </body>
+
+<style>
+  .nav-colored {
+    background-color: rgb(104, 100, 100);
+    height: 100px;
+    box-shadow: 3px 0 20px -5px rgba(255, 166, 0, 0.5);
+    transition: all 500ms ease-in-out;
+  }
+
+  .nav-transparent {
+    background-color: transparent;
+    
+  }
+</style>
+
 <script>
   function toggleNavbar(collapseID) {
     document.getElementById(collapseID).classList.toggle("hidden");
     document.getElementById(collapseID).classList.toggle("block");
+  }
+
+  const myNav = document.getElementById("myNav");
+
+  window.onscroll = () => {
+    "use strict";
+    if(document.body.scrollTop >= 80 || document.documentElement.scrollTop >= 80 ) {
+      myNav.classList.add("nav-colored");
+      myNav.classList.remove("nav-transparent")
+    } else {
+      myNav.classList.add("nav-transaprent");
+      myNav.classList.remove("nav-colored")
+    }
   }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
